@@ -1,0 +1,43 @@
+server {
+	listen 127.0.0.1;
+	server_name comp202204;
+
+    client_max_body_size 30M;
+	access_log /var/log/nginx/comp202204.access_log main;
+	error_log /var/log/nginx/comp202204.error_log info;
+    log_not_found on;
+
+	root /var/www/comp202204/htdocs/;
+    index index.php;
+    
+    # Forbid access to apache-like resources, git repo, KDevelop project, vim ctags
+    location ~ /(?:\.(ht|git)|nbproject/?|.kdev|/tags) {
+        return 403;
+    }
+
+    # Forbid access to resources that i may use
+    location ~ /(?:img/GIMP|private|Models|Controllers|API|Core|Routers|sql|Templates)/ {
+        return 404;
+    }
+
+    add_header X-XSS-Protection 0 always;
+    # Stops inline scripts...
+    add_header X-Content-Security-Policy "script-src 'self'" always;
+    # X-Content-Security-Policy: script-src 'self' http://code.jquery.com; style-src 'self'
+
+    location / {
+        fastcgi_buffering off;
+        # try_files $uri $uri/ /index.php/$uri;
+        try_files $uri /index.php/$uri?$args;
+    }
+
+    location ~ [^/]\.php(/|$) {
+        fastcgi_buffering off;
+        fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+        fastcgi_param HTTP_PROXY "";
+        fastcgi_pass unix:/run/php-fpm/www.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
