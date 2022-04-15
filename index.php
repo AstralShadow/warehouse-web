@@ -72,6 +72,10 @@ if($mysql["online"])
         }
         $router->add("Pages\User\Logout", "/logout");
         $router->add("Pages\User\Profile", "/profile");
+        $router->add("Pages\Data\Create", "/new");
+        $router->add("Pages\Data\Show", "/list");
+        $router->add("Pages\Data\Edit", "/edit");
+        $router->add("Pages\Data\Delete", "/data");
     }
     else
     {
