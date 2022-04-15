@@ -107,3 +107,9 @@ input
 {
     float: right;
 }
+
+.warning
+{
+    color: red;
+    font-weight: bold;
+}

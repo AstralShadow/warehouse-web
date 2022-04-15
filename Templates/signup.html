@@ -4,17 +4,29 @@
 
 <form method="post" class="border">
     Потребителско име:
+    <div class="warning paragraph">
+        ${name_msg=}
+    </div>
     <input name="name" type="text"
            minlength=3 maxlength=24 />
 
     Парола:
+    <div class="warning paragraph">
+        ${pwd_msg=}
+    </div>
     <input name="pwd" type="password"
            minlength=6 maxlength=72 />
 
     Повтори паролата:
+    <div class="warning paragraph">
+        ${pwd2_msg=}
+    </div>
     <input name="pwd2" type="password"
            minlength=6 />
 
+    <div class="warning paragraph">
+        ${error_msg=}
+    </div>
     <input type="submit" value="Регистрирай се"
            class="btn float-right" />
 </form>
