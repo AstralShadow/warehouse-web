@@ -26,17 +26,21 @@ use function Extend\generateToken;
 #[PrimaryKey("id")]
 class User extends Entity
 {
+    const COOKIE_NAME = "comp202204";
+
     public int $id;
     public string $name;
     protected string $pwd;
 
     protected string? $token;
 
+
     /* When creating data. */
     public function __construct($name, $pwd)
     {
         $this->name = $name;
         $algorithm = PASSWORD_BCRYPT;
+        $pwd = hash("sha256", $pwd);
         $this->pwd = password_hash($pwd, $algorithm);
         parent::__construct();
     }
@@ -58,6 +62,7 @@ class User extends Entity
         if(!isset($user))
             return null;
 
+        $pwd = hash("sha256", $pwd);
         if(!password_verify($pwd, $user->pwd))
             return null;
         
@@ -66,10 +71,14 @@ class User extends Entity
 
     public function toSession()
     {
-        $this->token = generateToken(42);
+        $token;
+        do {
+            $token = generateToken(42);
+        } while(isset(self::fromToken($token)));
 
+        $this->token = $token;
+        setCookie(self::COOKIE_NAME, $token);
         $this->save();
-        setCookie(self::COOKIE_NAME, $this->token);
     }
 
     public static function fromSession() : User?
@@ -78,11 +87,16 @@ class User extends Entity
         if(!isset($token))
             return null;
 
-        $user = self::find("token" => $token)[0] ?? null;
+        $user = self::fromToken($token);
         if(!isset($user))
             return null;
         
         return $user;
+    }
+
+    private static function fromToken($token) : User?
+    {
+        return self::find("token" => $token)[0] ?? null;
     }
 }
 

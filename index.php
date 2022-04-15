@@ -27,40 +27,34 @@ $mysql = [
 
 $mysql["online"] = true;/* to be added*/
 
+/* Дефиниция на routing таблицата.
+ * Следва формата контролер => адрес */
+$router = new Core\Router();
+$router->add("Controllers\Home", "/");
 
 
 if($mysql["online"])
 {
-    /* Дефиниция на routing таблицата.
-     * Следва формата контролер => адрес */
-    $router = new Core\Router();
-    $router->add("Controllers\Home", "/");
-
-
-    /* Инициализация на рамката */
-    $app = new Core\Controller($router);
-
-    /* Връзка с базата данни */
-    $app->usePDO($mysql["path"],
-                 $mysql["name"], $mysql["pwd"]);
-
-    /* Стартиране на рамката */
-    $app->run();
+    /* Добавя контролери, които изискват база данни */
+    $router->add("Controllers\Login", "/login");
+    $router->add("Controllers\Signup", "/signup");
 }
 else
 {
-    /* Дефиниция на routing таблицата.
-     * Следва формата контролер => адрес */
-    $router = new Core\Router();
-    $router->add("Controllers\Home", "/");
+    /* Добавяме 500 */
+    $router->add("Controllers\ServerOffline", "/login");
+    $router->add("Controllers\ServerOffline", "/signup");
+}
 
-
-    /* Стартиране на рамката */
-    $app = new Core\Controller($router);
-
+/* Инициализация на рамката */
+$app = new Core\Controller($router);
+if($mysql["online"])
+{
     /* Връзка с базата данни */
     $app->usePDO($mysql["path"],
                  $mysql["name"], $mysql["pwd"]);
-
-    $app->run();
 }
+
+/* Стартиране на рамката */
+$app->run();
+
