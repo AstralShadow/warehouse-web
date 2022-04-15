@@ -18,7 +18,7 @@ class Forbidden
     #[Fallback]
     public static function notFound()
     {
-        return Page("403.html", 403);
+        return Page("errors/403.html", 403);
     }
 
 }

@@ -24,7 +24,7 @@ class Home
     #[Fallback]
     public static function notFound()
     {
-        return Page("404.html");
+        return Page("errors/404.html");
     }
 
 }

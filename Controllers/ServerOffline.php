@@ -18,7 +18,7 @@ class ServerOffline
     #[Fallback]
     public static function notFound()
     {
-        return Page("503.html", 503);
+        return Page("errors/503.html", 503);
     }
 
 }
