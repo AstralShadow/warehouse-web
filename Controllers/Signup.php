@@ -78,6 +78,10 @@ class Signup
 
         $user = new User($name, $pwd);
 
-        return redirect("/login?new_user");
+        $msg = <<<EOL
+            Успешно регистрирахте $name
+        EOL;
+        $response->setValue("success_msg", $msg);
+        return $response;
     }
 }

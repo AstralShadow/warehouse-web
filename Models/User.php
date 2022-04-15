@@ -34,7 +34,6 @@ class User extends Entity
 
     protected ?string $token;
 
-
     /* When creating data. */
     public function __construct($name, $pwd)
     {

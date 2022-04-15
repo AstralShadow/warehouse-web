@@ -60,7 +60,7 @@ class Login
             return $response;
         }
 
-        if(!isValidString($pwd, 6))
+        if(!isValidString($pwd, 2))
         {
             $msg = <<<EOL
                 Невалидна парола.

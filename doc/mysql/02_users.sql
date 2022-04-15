@@ -7,5 +7,4 @@ CREATE TABLE Users(
     pwd BINARY(60) NOT NULL,
 
     token CHAR(42) UNIQUE
-
 );

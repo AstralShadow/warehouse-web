@@ -38,6 +38,17 @@ if($mysql["online"])
     /* Връзка с базата данни */
     $app->usePDO($mysql["path"],
                  $mysql["name"], $mysql["pwd"]);
+
+    /* Създава администраторски профил
+     * Този потребител може да регистрира
+     * други потребители.
+     */
+    $admin = User::findByName("admin");
+    if(!isset($admin))
+    {
+        new User("admin", "admin");
+    }
+    unset($admin);
 }
 
 
@@ -50,14 +61,22 @@ if($mysql["online"])
     if(isset($user))
     {
         $router->add("Controllers\Forbidden", "/login");
-        $router->add("Controllers\Forbidden", "/signup");
+        if("admin" == $user->name)
+        {
+            $router->add("Controllers\Signup", "/signup");
+        }
+        else
+        {
+            $router->add("Controllers\Forbidden",
+                         "/signup");
+        }
         $router->add("Controllers\Logout", "/logout");
         $router->add("Controllers\Profile", "/profile");
     }
     else
     {
         $router->add("Controllers\Login", "/login");
-        $router->add("Controllers\Signup", "/signup");
+        $router->add("Controllers\Forbidden", "/signup");
         $router->add("Controllers\RedirectToLogin",
                      "/profile");
         $router->add("Controllers\RedirectToLogin",

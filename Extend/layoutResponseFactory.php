@@ -16,17 +16,14 @@ function layoutResponseFactory(string $file,
         (file: "_layout.html", code: $code);
 
     $user = User::fromSession();
+    $menu = "anon";
     if(isset($user))
     {
-        $response->setValue("_user_menu",
-                            "_user_menu.html");
+        $menu = "admin" == $user->name ? "admin" : "user";
         $response->setValue("_user", $user->name);
     }
-    else
-    {
-        $response->setValue("_user_menu",
-                            "_anon_menu.html");
-    }
+    $response->setValue("_user_menu",
+                        "_${menu}_menu.html");
 
     $response->setValue("_page", $file);
 
