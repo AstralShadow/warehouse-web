@@ -3,27 +3,46 @@
 <form method="post">
 
     Име:
-    <div class="warning paragraph"> ${name_msg=} </div>
-    <input name="name" required maxlength=60 />
+    <div class="warning paragraph">
+        ${name_msg=}
+    </div>
+    <input name="name" required
+           minlength=3 maxlength=80 />
 
     Мерна единица:
-    <div class="warning paragraph"> ${unit_msg=} </div>
-    <input name="u_type" required maxlength=30 />
+    <div class="warning paragraph">
+        ${unit_type_msg=}
+    </div>
+    <input name="unit_type" required maxlength=30 />
            
     Количество:
-    <div class="warning paragraph"> ${unit_msg=} </div>
+    <div class="warning paragraph">
+        ${quantity_msg=}
+    </div>
     <input name="quantity" type="number" required
+           value=1 min=1 />
+
+    Цена на бройка/мерна единица:
+    <div class="warning paragraph">
+        ${unit_price_msg=}
+    </div>
+    <input name="unit_price" type="number" required
            value=1 min=1 />
 
     <br />
 
     Доставчик:
-    <div class="warning paragraph"> ${deliver_msg=} </div>
-    <input name="deliver" required />
+    <div class="warning paragraph">
+        ${deliver_msg=}
+    </div>
+    <input name="deliver" required minlength=5 />
 
     Дата на доставка:
-    <div class="warning paragraph"> ${date_msg=} </div>
-    <input name="date" type="date" required />
+    <div class="warning paragraph">
+        ${date_msg=}
+    </div>
+    <input name="date" type="date" required
+           max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" />
 
     <div class="warning paragraph"> ${error_msg=} </div>
     <div class="success paragraph"> ${success_msg=} </div>
