@@ -9,11 +9,11 @@ use Models\User;
 function layoutResponseFactory(string $file,
                                int $code = 200)
 {
-    if($file == "404.html" && $code == 200)
+    if($file == "errors/404.html" && $code == 200)
         $code = 404;
 
     $response = new TemplateResponse
-        (file: "_layout.html", code: $code);
+        (file: "shared/_layout.html", code: $code);
 
     $user = User::fromSession();
     $menu = "anon";
@@ -23,9 +23,9 @@ function layoutResponseFactory(string $file,
         $response->setValue("_user", $user->name);
     }
     $response->setValue("_user_menu",
-                        "_${menu}_menu.html");
+                        "shared/_${menu}_menu.html");
 
-    $response->setValue("_page", $file);
+    $response->setValue("shared/_page", $file);
 
     return $response;
 }
