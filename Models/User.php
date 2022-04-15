@@ -10,16 +10,8 @@ use Core\Attributes\Table;
 # Specifies primary key
 use Core\Attributes\PrimaryKey;
 
-# Part of lazy loading
-use Core\Attributes\TraceLazyLoad;
-
-# Collections from foreign key
-use Core\Attributes\Traceable;
-
-
 use function Extend\setCookie;
 use function Extend\generateToken;
-
 
 
 #[Table("Users")]

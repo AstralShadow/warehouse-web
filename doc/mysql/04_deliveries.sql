@@ -6,11 +6,11 @@ CREATE TABLE Deliveries(
     name NVARCHAR(255) NOT NULL,
 
     unit_type NVARCHAR(255) NOT NULL,
-    unit_price INT NOT NULL, # Working in pennies
+    unit_price FLOAT NOT NULL,
 
-    quantity INT NOT NULL DEFAULT 1,
+    quantity INT NOT NULL,
 
-    deliver NVARCHAR(255) NOT NULL,
-    end_date DATE NOT NULL
+    deliver TEXT NOT NULL,
+    date DATE NOT NULL
 );
 

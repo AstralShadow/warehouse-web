@@ -78,9 +78,7 @@ class Signup
 
         $user = new User($name, $pwd);
 
-        $msg = <<<EOL
-            Успешно регистрирахте $name
-        EOL;
+        $msg = "Успешно регистрирахте $name";
         $response->setValue("success_msg", $msg);
         return $response;
     }
