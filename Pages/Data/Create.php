@@ -17,9 +17,16 @@ class Create
 {
 
     #[GET]
-    public static function list()
+    public static function get()
     {
-        return Page("data/list.html");
+        return Page("data/create.html");
+    }
+
+    #[POST]
+    public static function add()
+    {
+        var_dump($_POST);
+        return Page("data/create.html");
     }
 
 }

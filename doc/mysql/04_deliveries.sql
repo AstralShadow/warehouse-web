@@ -10,6 +10,13 @@ CREATE TABLE Deliveries(
 
     quantity INT NOT NULL,
 
+
+    # No limit placed on deliver name length
+    #  due to it looking absurd when I
+    #  calculate multi-bit characters from unicode and
+    #  the fact that people might want to write full
+    #  company name and maybe even some side notes
+
     deliver TEXT NOT NULL,
     date DATE NOT NULL
 );

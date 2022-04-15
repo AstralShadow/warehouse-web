@@ -1,0 +1,31 @@
+<h1>Добавяне на доставка</h1>
+
+<form method="post">
+
+    Име:
+    <div class="warning paragraph"> ${name_msg=} </div>
+    <input name="name" required maxlength=60 />
+
+    Мерна единица:
+    <div class="warning paragraph"> ${unit_msg=} </div>
+    <input name="u_type" required maxlength=30 />
+           
+    Количество:
+    <div class="warning paragraph"> ${unit_msg=} </div>
+    <input name="quantity" type="number" required
+           value=1 min=1 />
+
+    <br />
+
+    Доставчик:
+    <div class="warning paragraph"> ${deliver_msg=} </div>
+    <input name="deliver" required />
+
+    Дата на доставка:
+    <div class="warning paragraph"> ${date_msg=} </div>
+    <input name="date" type="date" required />
+
+    <div class="warning paragraph"> ${error_msg=} </div>
+    <div class="success paragraph"> ${success_msg=} </div>
+    <input type="submit" value="Добави" class="btn" />
+</form>

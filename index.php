@@ -53,7 +53,7 @@ if($mysql["online"])
 
 
 /* Дефиниция на routing таблицата.
- * Следва формата контролер => адрес */
+ * Следва формат "контролер => адрес" */
 $router->add("Pages\Home", "/");
 if($mysql["online"])
 {
@@ -67,8 +67,7 @@ if($mysql["online"])
         }
         else
         {
-            $router->add("Pages\Forbidden",
-                         "/signup");
+            $router->add("Pages\Forbidden", "/signup");
         }
         $router->add("Pages\User\Logout", "/logout");
         $router->add("Pages\User\Profile", "/profile");
@@ -81,10 +80,8 @@ if($mysql["online"])
     {
         $router->add("Pages\User\Login", "/login");
         $router->add("Pages\Forbidden", "/signup");
-        $router->add("Pages\RedirectToLogin",
-                     "/profile");
-        $router->add("Pages\RedirectToLogin",
-                     "/logout");
+        $router->add("Pages\RedirectToLogin", "/profile");
+        $router->add("Pages\RedirectToLogin", "/logout");
     }
 }
 else

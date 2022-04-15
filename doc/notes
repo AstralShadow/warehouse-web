@@ -1,4 +1,8 @@
 Code width is limited because i'm coding splitscreen
  with ~60 characters width.
 
+The app uses MVC, i'm calling views Templates,
+ because i create html by them, so they're templates.
+I'm calling Controllers Pages, because having
+ them that way makes them shorter and easier to handle.
 
