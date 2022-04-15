@@ -20,6 +20,7 @@ function layoutResponseFactory(string $file,
     {
         $response->setValue("_user_menu",
                             "_user_menu.html");
+        $response->setValue("_user", $user->name);
     }
     else
     {

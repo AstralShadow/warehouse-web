@@ -52,11 +52,14 @@ if($mysql["online"])
         $router->add("Controllers\Forbidden", "/login");
         $router->add("Controllers\Forbidden", "/signup");
         $router->add("Controllers\Logout", "/logout");
+        $router->add("Controllers\Profile", "/profile");
     }
     else
     {
         $router->add("Controllers\Login", "/login");
         $router->add("Controllers\Signup", "/signup");
+        $router->add("Controllers\RedirectToLogin",
+                     "/profile");
         $router->add("Controllers\RedirectToLogin",
                      "/logout");
     }

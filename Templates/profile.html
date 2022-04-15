@@ -1,0 +1,42 @@
+<h1>
+    Здравейте, ${_user}
+</h1>
+
+<p>
+    От тази страница можете да смените паролата си.
+</p>
+
+<form method="post">
+    Настояща парола:
+    <div class="warning paragraph">
+        ${old_msg=}
+    </div>
+    <input name="old_pwd" type="password"
+           autocomplete="current-password"
+           minlength=6 />
+
+    Нова паролата:
+    <div class="warning paragraph">
+        ${new_msg=}
+    </div>
+    <input name="new_pwd" type="password"
+           autocomplete="new-password"
+           minlength=6 />
+
+    Повторете новата паролата:
+    <div class="warning paragraph">
+        ${new2_msg=}
+    </div>
+    <input name="new_pwd2" type="password"
+           autocomplete="new-password"
+           minlength=6 />
+
+    <div class="warning paragraph">
+        ${error_msg=}
+    </div>
+    <div class="success paragraph">
+        ${success_msg=}
+    </div>
+    <input type="submit" value="Смени паролата"
+           class="btn" />
+</form>

@@ -8,19 +8,23 @@
         ${name_msg=}
     </div>
     <input name="name" type="text"
+           autocomplete="user"
            minlength=3 maxlength=24 />
 
     Парола:
     <div class="warning paragraph">
         ${pwd_msg=}
     </div>
-    <input name="pwd" type="password" minlength=6 />
+    <input name="pwd" type="password"
+           autocomplete="new-password"
+           minlength=6 />
 
     Повтори паролата:
     <div class="warning paragraph">
         ${pwd2_msg=}
     </div>
     <input name="pwd2" type="password"
+           autocomplete="new-password"
            minlength=6 />
 
     <div class="warning paragraph">

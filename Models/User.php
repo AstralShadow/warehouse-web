@@ -45,6 +45,20 @@ class User extends Entity
         parent::__construct();
     }
 
+    public function changePassword($old, $new) : bool
+    {
+        $pwd = hash("sha256", $old);
+        if(!password_verify($pwd, $this->pwd))
+            return false;
+
+        $pwd = hash("sha256", $new);
+        $algorithm = PASSWORD_BCRYPT;
+        $this->pwd = password_hash($pwd, $algorithm);
+
+        $this->save();
+        return true;
+    }
+
     public static function exists($name) : bool
     {
         return self::findByName($name) !== null;
