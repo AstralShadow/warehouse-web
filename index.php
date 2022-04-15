@@ -14,6 +14,9 @@ include "Extend/generateToken.php";
  * на класове по тяхното име */
 include "Core/autoload.php";
 
+/* Използван при задаване на рутирането */
+use Models\User;
+
 
 /* MySQL сървър */
 $mysql = [
@@ -24,29 +27,11 @@ $mysql = [
 
 
 /* Проверка за състоянието на MySQL сървъра*/
-
 $mysql["online"] = true;/* to be added*/
 
-/* Дефиниция на routing таблицата.
- * Следва формата контролер => адрес */
-$router = new Core\Router();
-$router->add("Controllers\Home", "/");
-
-
-if($mysql["online"])
-{
-    /* Добавя контролери, които изискват база данни */
-    $router->add("Controllers\Login", "/login");
-    $router->add("Controllers\Signup", "/signup");
-}
-else
-{
-    /* Добавяме 500 */
-    $router->add("Controllers\ServerOffline", "/login");
-    $router->add("Controllers\ServerOffline", "/signup");
-}
 
 /* Инициализация на рамката */
+$router = new Core\Router();
 $app = new Core\Controller($router);
 if($mysql["online"])
 {
@@ -54,6 +39,35 @@ if($mysql["online"])
     $app->usePDO($mysql["path"],
                  $mysql["name"], $mysql["pwd"]);
 }
+
+
+/* Дефиниция на routing таблицата.
+ * Следва формата контролер => адрес */
+$router->add("Controllers\Home", "/");
+if($mysql["online"])
+{
+    $user = User::fromSession();
+    if(isset($user))
+    {
+        $router->add("Controllers\Forbidden", "/login");
+        $router->add("Controllers\Forbidden", "/signup");
+        $router->add("Controllers\Logout", "/logout");
+    }
+    else
+    {
+        $router->add("Controllers\Login", "/login");
+        $router->add("Controllers\Signup", "/signup");
+        $router->add("Controllers\RedirectToLogin",
+                     "/logout");
+    }
+}
+else
+{
+    $router->add("Controllers\ServerOffline", "/login");
+    $router->add("Controllers\ServerOffline", "/signup");
+}
+
+
 
 /* Стартиране на рамката */
 $app->run();

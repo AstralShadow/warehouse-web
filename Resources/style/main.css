@@ -110,6 +110,19 @@ input
 
 .warning
 {
-    color: red;
+    color: #a00;
+    font-weight: bold;
+}
+
+.success
+{
+
+    color: #0a0;
+    font-weight: bold;
+}
+
+.info
+{
+    color: #0aa;
     font-weight: bold;
 }

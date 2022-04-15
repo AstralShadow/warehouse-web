@@ -32,7 +32,7 @@ class User extends Entity
     public string $name;
     protected string $pwd;
 
-    protected string? $token;
+    protected ?string $token;
 
 
     /* When creating data. */
@@ -47,17 +47,17 @@ class User extends Entity
 
     public static function exists($name) : bool
     {
-        return count(self::find("name" => $name));
+        return self::findByName($name) !== null;
     }
 
-    public static function find($name) : User?
+    public static function findByName($name) : ?User
     {
-        return self::find("name" => $name)[0] ?? null;
+        return self::find(["name" => $name])[0] ?? null;
     }
 
-    public static function login($name, $pwd) : User?
+    public static function login($name, $pwd) : ?User
     {
-        $user = self::find($name);
+        $user = self::findByName($name);
         
         if(!isset($user))
             return null;
@@ -74,17 +74,17 @@ class User extends Entity
         $token;
         do {
             $token = generateToken(42);
-        } while(isset(self::fromToken($token)));
+        } while(self::fromToken($token) !== null);
 
         $this->token = $token;
         setCookie(self::COOKIE_NAME, $token);
         $this->save();
     }
 
-    public static function fromSession() : User?
+    public static function fromSession() : ?User
     {
         $token = $_COOKIE[self::COOKIE_NAME] ?? null;
-        if(!isset($token))
+        if(!isset($token) || trim($token) == "")
             return null;
 
         $user = self::fromToken($token);
@@ -94,9 +94,20 @@ class User extends Entity
         return $user;
     }
 
-    private static function fromToken($token) : User?
+    public static function clearSession() : void
     {
-        return self::find("token" => $token)[0] ?? null;
+        $user = self::fromSession();
+        setCookie(self::COOKIE_NAME, null);
+        if(isset($user))
+        {
+            $user->token = null;
+            $user->save();
+        }
+    }
+
+    private static function fromToken($token) : ?User
+    {
+        return self::find(["token" => $token])[0] ?? null;
     }
 }
 

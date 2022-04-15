@@ -2,7 +2,7 @@
     Регистрация
 </h1>
 
-<form method="post" class="border">
+<form method="post">
     Потребителско име:
     <div class="warning paragraph">
         ${name_msg=}
@@ -14,8 +14,7 @@
     <div class="warning paragraph">
         ${pwd_msg=}
     </div>
-    <input name="pwd" type="password"
-           minlength=6 maxlength=72 />
+    <input name="pwd" type="password" minlength=6 />
 
     Повтори паролата:
     <div class="warning paragraph">
@@ -28,5 +27,5 @@
         ${error_msg=}
     </div>
     <input type="submit" value="Регистрирай се"
-           class="btn float-right" />
+           class="btn" />
 </form>

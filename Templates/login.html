@@ -2,15 +2,27 @@
     Вход
 </h1>
 
-<form method="post" class="border">
+<form method="post">
     Потребителско име:
+    <div class="warning paragraph">
+        ${name_msg=}
+    </div>
     <input name="name" type="text"
            minlength=3 maxlength=24 />
 
     Парола:
+    <div class="warning paragraph">
+        ${pwd_msg=}
+    </div>
     <input name="pwd" type="password"
            minlength=6 maxlength=72 />
 
+    <div class="warning paragraph">
+        ${error_msg=}
+    </div>
+    <div class="success paragraph">
+        ${success_msg=}
+    </div>
     <input type="submit" value="Влез"
-           class="btn float-right" />
+           class="btn" />
 </form>
