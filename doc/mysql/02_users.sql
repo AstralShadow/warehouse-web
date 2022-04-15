@@ -6,6 +6,6 @@ CREATE TABLE Users(
     username NVARCHAR(255) NOT NULL,
     pwd BINARY(60) NOT NULL,
 
-    token CHAR(42)
+    token CHAR(42) UNIQUE
 
 );

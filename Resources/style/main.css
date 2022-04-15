@@ -16,6 +16,7 @@ header#page_top
     color: black;
     background: #ffd;
     border-bottom: 2px solid #bbb;
+    padding: 0px 10%;
 }
 
 h-flex
@@ -48,7 +49,7 @@ h-flex
 flex-fill
 {
     display: block;
-    flex: 1;
+    flex: auto;
 }
 
 main

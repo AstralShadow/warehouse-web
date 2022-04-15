@@ -1,0 +1,2 @@
+CREATE UNIQUE INDEX TOKEN_INDEX ON Users (token);
+

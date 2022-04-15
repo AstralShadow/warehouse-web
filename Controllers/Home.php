@@ -18,10 +18,7 @@ class Home
     #[GET]
     public static function index()
     {
-        //return redirect("/login?next=/user");
-        $response = Page("index.html", 501);
-
-        return $response;
+        return Page("index.html");
     }
 
     #[Fallback]
