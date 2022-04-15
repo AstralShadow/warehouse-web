@@ -7,6 +7,7 @@ body, html
 {
     padding: 0px;
     margin: 0px;
+    font-size: 16pt;
 }
 
 header#page_top
@@ -24,6 +25,14 @@ h-flex
     display: flex;
 }
 
+.border
+{
+    border: 2px solid #bbb;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 8px;
+}
+
 .btn
 {
     border: 2px solid #bbb;
@@ -33,6 +42,7 @@ h-flex
     background: white;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .btn:hover
@@ -58,10 +68,14 @@ main
 }
 
 
+h1
+{
+    font-size: 32pt;
+}
 
 legend
 {
-    font-size: 16pt;
+    font-size: 24pt;
     font-weight: bold;
     margin: 8px;
 }
@@ -74,4 +88,22 @@ fieldset
 p, .paragraph
 {
     text-indent: 2em;
+}
+
+input
+{
+    border: 2px solid #999;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    font-size: 16pt;
+    display: block;
+    margin-bottom: 16px;
+}
+
+.float-right
+{
+    float: right;
 }
