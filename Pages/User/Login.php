@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Pages\User;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
@@ -20,34 +20,16 @@ class Login
     #[GET]
     public static function index()
     {
-        //return redirect("/login?next=/user");
-        $response = Page("login.html");
-
-        if(self::isNewUser())
-        {
-            $msg = <<<EOL
-                Регистрацията беше успешна.
-            EOL;
-            $response->setValue("success_msg", $msg);
-        }
-
-        return $response;
-    }
-
-    private static function isNewUser() : bool
-    {
-        $keys = array_keys($_GET);
-        return in_array("new_user", $keys);
+        return Page("user/login.html");
     }
 
     #[POST]
     public static function login()
     {
-        $response = Page("login.html");
+        $response = Page("user/login.html");
 
         $name =& $_POST["name"];
         $pwd =& $_POST["pwd"];
-
         
         if(!isValidString($name, 3) || strlen($name) > 24)
         {

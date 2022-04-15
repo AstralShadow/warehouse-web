@@ -25,7 +25,7 @@ function layoutResponseFactory(string $file,
     $response->setValue("_user_menu",
                         "shared/_${menu}_menu.html");
 
-    $response->setValue("shared/_page", $file);
+    $response->setValue("_page", $file);
 
     return $response;
 }

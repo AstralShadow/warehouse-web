@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Pages\User;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
@@ -20,18 +20,17 @@ class Signup
 {
 
     #[GET]
-    public static function index()
+    public static function get()
     {
-        $response = Page("signup.html");
+        $response = Page("user/signup.html");
 
         return $response;
     }
 
     #[POST]
-    public static function signup()
+    public static function post()
     {
-        //return redirect("/login?next=/user");
-        $response = Page("signup.html");
+        $response = Page("user/signup.html");
         $name =& $_POST["name"];
         $pwd =& $_POST["pwd"];
         $pwd2 =& $_POST["pwd2"];

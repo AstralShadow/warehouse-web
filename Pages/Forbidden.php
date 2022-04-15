@@ -1,10 +1,9 @@
 <?php
-namespace Controllers;
+namespace Pages;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
 use function Extend\redirect;
-use function Extend\isValidString;
 use Core\RequestMethods\GET;
 use Core\RequestMethods\PUT;
 use Core\RequestMethods\POST;
@@ -12,15 +11,14 @@ use Core\RequestMethods\DELETE;
 use Core\RequestMethods\Fallback;
 use Core\RequestMethods\StartUp;
 
-use Models\User;
 
-class Logout
+class Forbidden
 {
 
     #[Fallback]
-    public static function logout()
+    public static function notFound()
     {
-        User::clearSession();
-        return redirect("/login");
+        return Page("errors/403.html", 403);
     }
+
 }

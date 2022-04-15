@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Pages\User;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
@@ -18,17 +18,17 @@ class Profile
 {
 
     #[GET]
-    public static function index()
+    public static function get()
     {
-        $response = Page("profile.html");
+        $response = Page("user/profile.html");
 
         return $response;
     }
 
     #[POST]
-    public static function login()
+    public static function post()
     {
-        $response = Page("profile.html");
+        $response = Page("user/profile.html");
 
         $old =& $_POST["old_pwd"];
         $new =& $_POST["new_pwd"];

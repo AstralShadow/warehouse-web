@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Pages;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
@@ -12,13 +12,13 @@ use Core\RequestMethods\Fallback;
 use Core\RequestMethods\StartUp;
 
 
-class Forbidden
+class RedirectToLogin
 {
 
     #[Fallback]
     public static function notFound()
     {
-        return Page("errors/403.html", 403);
+        return redirect("/login");
     }
 
 }

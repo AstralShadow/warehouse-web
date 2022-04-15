@@ -54,39 +54,39 @@ if($mysql["online"])
 
 /* Дефиниция на routing таблицата.
  * Следва формата контролер => адрес */
-$router->add("Controllers\Home", "/");
+$router->add("Pages\Home", "/");
 if($mysql["online"])
 {
     $user = User::fromSession();
     if(isset($user))
     {
-        $router->add("Controllers\Forbidden", "/login");
+        $router->add("Pages\Forbidden", "/login");
         if("admin" == $user->name)
         {
-            $router->add("Controllers\Signup", "/signup");
+            $router->add("Pages\User\Signup", "/signup");
         }
         else
         {
-            $router->add("Controllers\Forbidden",
+            $router->add("Pages\Forbidden",
                          "/signup");
         }
-        $router->add("Controllers\Logout", "/logout");
-        $router->add("Controllers\Profile", "/profile");
+        $router->add("Pages\User\Logout", "/logout");
+        $router->add("Pages\User\Profile", "/profile");
     }
     else
     {
-        $router->add("Controllers\Login", "/login");
-        $router->add("Controllers\Forbidden", "/signup");
-        $router->add("Controllers\RedirectToLogin",
+        $router->add("Pages\User\Login", "/login");
+        $router->add("Pages\Forbidden", "/signup");
+        $router->add("Pages\RedirectToLogin",
                      "/profile");
-        $router->add("Controllers\RedirectToLogin",
+        $router->add("Pages\RedirectToLogin",
                      "/logout");
     }
 }
 else
 {
-    $router->add("Controllers\ServerOffline", "/login");
-    $router->add("Controllers\ServerOffline", "/signup");
+    $router->add("Pages\ServerOffline", "/login");
+    $router->add("Pages\ServerOffline", "/signup");
 }
 
 

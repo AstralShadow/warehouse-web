@@ -1,5 +1,5 @@
 <?php
-namespace Controllers;
+namespace Pages;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
