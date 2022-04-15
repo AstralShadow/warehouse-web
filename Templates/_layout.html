@@ -6,10 +6,23 @@
               href="${path:style/main.css}" />
     </head>
     <body>
-        <header>
-            
+        <header id="page_top">
+            <h-flex>
+                <a href="/" class="btn">
+                   Начало
+                </a>
+                <flex-fill> </flex-fill>
+                <a href="/signup" class="btn">
+                   Регистрация
+                </a>
+                <a href="/login" class="btn">
+                   Вход
+                </a>
+            </h-flex>
         </header>
-        ${parse:${_page=404.html}}
+        <main>
+            ${parse:${_page=404.html}}
+        </main>
     </body>
 </html>
 

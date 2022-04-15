@@ -1,3 +1,76 @@
-:root {
+:root
+{
 
+}
+
+body, html
+{
+    padding: 0px;
+    margin: 0px;
+}
+
+header#page_top
+{
+    position: sticky;
+    top: 0px;
+    color: black;
+    background: #ffd;
+    border-bottom: 2px solid #bbb;
+}
+
+h-flex
+{
+    display: flex;
+}
+
+.btn
+{
+    border: 2px solid #bbb;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background: white;
+    text-decoration: none;
+    color: black;
+}
+
+.btn:hover
+{
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.btn:active
+{
+    transform: scale(0.95);
+}
+
+flex-fill
+{
+    display: block;
+    flex: 1;
+}
+
+main
+{
+    margin: 8px 10%;
+}
+
+
+
+legend
+{
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 8px;
+}
+
+fieldset
+{
+    margin-bottom: 32px;
+}
+
+p, .paragraph
+{
+    text-indent: 2em;
 }
