@@ -13,4 +13,9 @@ Make all inputs required
 
 FullText search with mysql
 
-Add currency and comma to Price
+
+When invalid item:
+/list?missing_item=1
+
+When item deleted:
+/list?deleted_item=1

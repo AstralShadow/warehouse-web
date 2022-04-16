@@ -26,6 +26,8 @@ class Delivery extends Entity
     public string $deliver;
     public \DateTime $date;
 
+    public ?\DateTime $deleted = null;
+
     /* When creating data. */
     public function __construct(array $data)
     {

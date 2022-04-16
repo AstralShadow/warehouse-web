@@ -1,0 +1,59 @@
+<h1>Редакция</h1>
+
+<form method="post" action="${next}">
+
+    Име:
+    <div class="warning paragraph">
+        ${name_msg=}
+    </div>
+    <input name="name" value="${name}" required
+           minlength=3 maxlength=80 />
+
+    Мерна единица:
+    <div class="warning paragraph">
+        ${unit_type_msg=}
+    </div>
+    <input name="unit_type" value="${unit_type}"
+           required maxlength=30 />
+           
+    Количество:
+    <div class="warning paragraph">
+        ${quantity_msg=}
+    </div>
+    <input name="quantity" type="number" required
+           value="${quantity}" min=1 />
+
+    Цена на бройка/мерна единица:
+    <div class="warning paragraph">
+        ${unit_price_msg=}
+    </div>
+    <label class="price_input">
+        <input name="unit_price" type="number"
+               value="${unit_price}" required
+               min=0.001 step=0.001 />
+        <div class="currency">
+            лв
+        </div>
+    </label>
+
+    <br />
+
+    Доставчик:
+    <div class="warning paragraph">
+        ${deliver_msg=}
+    </div>
+    <input name="deliver" value="${deliver}"
+           required minlength=5 />
+
+    Дата на доставка:
+    <div class="warning paragraph">
+        ${date_msg=}
+    </div>
+    <input name="date" type="date" required
+           max="3000-01-01" value="${date}"
+           onfocus="this.max=new Date().toISOString().split('T')[0]" />
+
+    <div class="warning paragraph"> ${error_msg=} </div>
+    <div class="success paragraph"> ${success_msg=} </div>
+    <input type="submit" value="Запиши" class="btn" />
+</form>

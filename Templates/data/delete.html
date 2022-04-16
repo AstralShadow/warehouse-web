@@ -1,0 +1,33 @@
+<h1>Изтриване на доставка</h1>
+
+<form method="post">
+
+    Име:
+    <input value="${name}" disabled />
+
+    Мерна единица:
+    <input value="${unit_type}" disabled />
+           
+    Количество:
+    <input type="number" value="${quantity}" disabled />
+
+    Цена на бройка/мерна единица:
+    <div></div>
+    <label class="price_input">
+        <input type="number" disabled
+               value="${unit_price}" />
+        <div class="currency"> лв </div>
+    </label>
+
+    <br />
+
+    Доставчик:
+    <input value="${deliver}" disabled />
+
+    Дата на доставка:
+    <input type="date" disabled value="${date}" />
+
+    <div class="warning paragraph"> ${error_msg=} </div>
+    <div class="success paragraph"> ${success_msg=} </div>
+    <input type="submit" value="Изтрии" class="btn" />
+</form>

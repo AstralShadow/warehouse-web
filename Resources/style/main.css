@@ -101,6 +101,11 @@ input
     font-size: 16pt;
     display: block;
     margin-bottom: 16px;
+} 
+
+input[disabled]
+{
+    background: #f2f2f2;
 }
 
 .float-right

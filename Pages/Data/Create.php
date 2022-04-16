@@ -23,7 +23,7 @@ class Create
 
         if(isset($_GET["success"]))
         {
-            $msg = "Доставката беше успешно записана.";
+            $msg = "Доставката беше записана успешно.";
             $response->setValue("success_msg", $msg);
         }
         return $response;

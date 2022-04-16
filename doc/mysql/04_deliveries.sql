@@ -18,6 +18,12 @@ CREATE TABLE Deliveries(
     #  company name and maybe even some side notes
 
     deliver TEXT NOT NULL,
-    date DATE NOT NULL
+    date DATE NOT NULL,
+
+    # The use of this is to replace deletion with
+    # mark-as-deleted. You may trigger that feature
+    # in /Pages/Data/Delete.php
+    deleted DATE DEFAULT NULL
 );
+
 

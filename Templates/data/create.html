@@ -47,7 +47,9 @@
         ${date_msg=}
     </div>
     <input name="date" type="date" required
-           max="3000-01-01" onfocus="this.max=new Date().toISOString().split('T')[0]" />
+           max="3000-01-01" data-value="now"
+           onfocus="this.max=new Date().toISOString().split('T')[0]" />
+    <script src="${path:scripts/misc/set_current_date.js}"> </script>
 
     <div class="warning paragraph"> ${error_msg=} </div>
     <div class="success paragraph"> ${success_msg=} </div>
