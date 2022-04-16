@@ -3,6 +3,7 @@ namespace Pages\Data;
 
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
+use function Extend\isValidString;
 use function Extend\redirect;
 use Core\Responses\ApiResponse;
 use Core\RequestMethods\GET;
@@ -46,17 +47,26 @@ class Show
     }
 
     #[GET("/data")]
+    #[POST("/data")]
     public static function data($req)
     {
         $search;
+        if(isValidString($_POST["search"], 1))
+            $search = trim($_POST["search"]);
 
-        $query = [];
+        $collection = Delivery::find([]);
 
-        $collection = Delivery::find($query);
         $result = [];
         foreach($collection as $item)
         {
-            if($item->deleted) continue;
+            if($item->deleted)
+                continue;
+
+            if(isset($search) &&
+                !self::match($item, $search))
+            {
+                continue;
+            }
 
             $result[] = $item->apiData();
         }
@@ -76,4 +86,18 @@ class Show
         return self::json(["error" => $error], $code);
     }
 
+    private static function match($item, $phrase) : bool
+    {
+        $data = $item->apiData();
+        $phrase = mb_strtolower($phrase);
+
+        foreach($data as $val)
+        {
+            $val = mb_strtolower($val);
+            if(mb_strpos($val, $phrase) !== false)
+                return true;
+        }
+
+        return false;
+    }
 }

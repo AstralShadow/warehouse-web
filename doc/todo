@@ -1,7 +1,6 @@
 CSRF protection [security, optional]
 Logout via post [security, optional]
 
-[important] search data
 FullText search with mysql [optional, feature]
 
 Delete users [kinda important, optional]

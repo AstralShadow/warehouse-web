@@ -227,6 +227,10 @@ input[disabled]
     display: flex;
 }
 
+.row.title > *
+{
+    background: #f2f2f2;
+}
 
 @media (max-width: 750px)
 {
@@ -247,4 +251,3 @@ input[disabled]
         }
     }
 }
-

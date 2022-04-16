@@ -3,6 +3,8 @@ import { getContext } from "./list_getContext.js"
 
 const container = document.querySelector("#content")
 const base = container.querySelector(".pair")
+const search_bar = document.querySelector("#search_bar")
+const search_btn = document.querySelector(".search")
 const elements = []
 
 function clear()
@@ -17,14 +19,20 @@ clear()
 
 async function fetch(query)
 {
-    if(query === undefined) query = {}
-    var req = await ajax("get", "/list/data", query);
-    console.log(req, req.data)
+    var data = null
+    if(query != undefined)
+    {
+        data = new FormData()
+        data.append("search", query)
+    }
 
-    populate(req.data)
+    var url = "/list/data"
+    var req = await ajax("post", url, data)
+
+    populate(req.data, query)
 }
 
-fetch()
+fetch(search_bar.value)
 
 
 function toggleFocus(pair) {
@@ -43,7 +51,7 @@ function toggleFocus(pair) {
     }
 }
 
-function populate(data)
+function populate(data, query)
 {
     clear()
     elements.length = 0
@@ -65,4 +73,41 @@ function populate(data)
         container.appendChild(div)
         elements.push(div)
     })
+
+    if(data.length == 0)
+    {
+        var msg = document.createElement("p")
+        msg.classList.add("info")
+        if(query)
+            msg.innerText = "Няма намерени доставки," + 
+                " които отговарят на търсенето " +
+                '"' + query + '"'
+        else
+            msg.innerText = "Няма налични доставки. " +
+                "Можете да добавите такива от бутона " +
+                "Нова доставка."
+        container.appendChild(msg)
+    }
 }
+
+
+/* Search bar */
+
+search_btn.addEventListener('click', function()
+{
+    var value = search_bar.value
+    fetch(value)
+})
+
+search_bar.addEventListener('blur', function()
+{
+    var value = search_bar.value
+    fetch(value)
+})
+
+search_bar.addEventListener('keydown', function(e)
+{
+    if(e.keyCode != 13) return;
+    var value = search_bar.value
+    fetch(value)
+})
