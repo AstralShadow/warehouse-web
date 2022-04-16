@@ -153,7 +153,7 @@ input[disabled]
     cursor: pointer;
 }
 
-.row > .count
+.count
 {
     text-align: right;
     max-width: 110px;
@@ -163,24 +163,30 @@ input[disabled]
     white-space: nowrap;
 }
 
-.row > .price
+.price
 {
     text-align: right;
     max-width: 80px;
     min-width: 80px;
 }
 
-.row > .edit
+.edit
 {
     background-image: url("/Resources/img/draw.png");
 }
 
-.row > .delete
+.delete
 {
     background-image: url("/Resources/img/x.png");
 }
 
-.row > .btn
+.search
+{
+    background-image:
+        url("/Resources/img/magnifier.png");
+}
+
+.icon, .row > .btn
 {
     display: block;
     width: 24px;
