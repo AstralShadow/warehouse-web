@@ -41,7 +41,12 @@ export function getContext(base)
         get deliver()
             { return deliver.innerText },
         set deliver(v)
-            { deliver.innerText = v }
+            { deliver.innerText = v },
+
+        get date()
+            { return date.innerText },
+        set date(v)
+            { date.innerText = v }
     }
 }
 

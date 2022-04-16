@@ -51,7 +51,7 @@ class Delivery extends Entity
             "count" => $this->quantity . $this->unit_type,
             "price" => $this->unit_price,
             "deliver" => $this->deliver,
-            "date" => $this->date->format("d-m-Y")
+            "date" => $this->date->format("d.m.Y") . "г"
         ];
 
         return $data;

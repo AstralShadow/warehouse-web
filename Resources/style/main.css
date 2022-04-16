@@ -148,6 +148,11 @@ input[disabled]
     transform: translate(0%, -50%);
 }
 
+.row
+{
+    cursor: pointer;
+}
+
 .row > .count
 {
     text-align: right;
@@ -201,9 +206,9 @@ input[disabled]
     transform: translate(0px, -8px);
 }
 
-.pair.focus > .data
+.pair.focus > h-flex.data
 {
-    display: block;
+    display: flex;
 }
 
 

@@ -20,5 +20,5 @@ docs/hosting/sites-enabled/comp202204
 отворен код, която може да разгледате на адрес:
 https://github.com/AstralShadow/PHPFramework/
 
-Сорсът на самото приложение ще бъде публикуван в github:
-https://github.com/AstralShadow//
+Сорсът на самото приложение е публикуван в github:
+https://github.com/AstralShadow/warehouse-web/
