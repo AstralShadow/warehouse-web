@@ -15,7 +15,10 @@ function layoutResponseFactory(string $file,
     $response = new TemplateResponse
         (file: "shared/_layout.html", code: $code);
 
-    $user = User::fromSession();
+    $user = null;
+    if(DATABASE_ONLINE)
+        $user = User::fromSession();
+
     $menu = "anon";
     if(isset($user))
     {

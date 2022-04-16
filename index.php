@@ -26,18 +26,27 @@ $mysql = [
 ];
 
 
-/* Проверка за състоянието на MySQL сървъра*/
-$mysql["online"] = true;/* to be added*/
-
-
 /* Инициализация на рамката */
 $router = new Core\Router();
 $app = new Core\Controller($router);
-if($mysql["online"])
+/* Връзка с базата данни */
+$app->usePDO($mysql["path"],
+             $mysql["name"], $mysql["pwd"]);
+
+
+/* Проверка за състоянието на MySQL сървъра*/
+try
 {
-    /* Връзка с базата данни */
-    $app->usePDO($mysql["path"],
-                 $mysql["name"], $mysql["pwd"]);
+    $app->initPDO();
+    define("DATABASE_ONLINE", true);
+} catch(PDOException $e)
+{
+    define("DATABASE_ONLINE", false);
+}
+
+
+if(DATABASE_ONLINE)
+{
 
     /* Създава администраторски профил
      * Този потребител може да регистрира
@@ -55,7 +64,7 @@ if($mysql["online"])
 /* Дефиниция на routing таблицата.
  * Следва формат "контролер => адрес" */
 $router->add("Pages\Home", "/");
-if($mysql["online"])
+if(DATABASE_ONLINE)
 {
     $user = User::fromSession();
     if(isset($user))
