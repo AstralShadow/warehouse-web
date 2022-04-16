@@ -3,7 +3,31 @@
 <div class="warning paragraph"> ${error_msg=} </div>
 <div class="success paragraph"> ${success_msg=} </div>
 
+<h-flex class="row">
+    <flex-fill class="name border"> Име </flex-fill>
+    <div class="count border"> Количество </div>
+    <div class="price border"> Цена/бр </div>
+    <a class="edit opaque btn"></a>
+    <a class="delete opaque btn"></a>
+</h-flex>
+
 <div class="content">
+    <div class="pair">
+        <h-flex class="row">
+            <flex-fill class="name border"> Name </flex-fill>
+            <div class="count border">
+                5 чаши с прясно приготвен портокалов сок
+            </div>
+            <div class="price border"> 2.00лв </div>
+            <a href="/edit?id=4" data-href="/edit"
+               class="edit btn"></a>
+            <a href="/delete?id=4" data-href="/delete"
+               class="delete btn"></a>
+        </h-flex>
+        <h-flex class="data">
+            
+        </h-flex>
+    </div>
 </div>
 
 <script src="${path:js/list.js}" type="module"></script>

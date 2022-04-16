@@ -31,6 +31,7 @@ h-flex
     border-radius: 8px;
     display: inline-block;
     padding: 8px;
+    margin: 8px;
 }
 
 .btn
@@ -43,6 +44,7 @@ h-flex
     text-decoration: none;
     color: black;
     cursor: pointer;
+    user-select: none;
 }
 
 .btn:hover
@@ -145,3 +147,69 @@ input[disabled]
     top: 31px;
     transform: translate(0%, -50%);
 }
+
+.row > .count
+{
+    text-align: right;
+    max-width: 110px;
+    min-width: 110px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.row > .price
+{
+    text-align: right;
+    max-width: 80px;
+    min-width: 80px;
+}
+
+.row > .edit
+{
+    background-image: url("/Resources/img/draw.png");
+}
+
+.row > .delete
+{
+    background-image: url("/Resources/img/x.png");
+}
+
+.row > .btn
+{
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 40px;
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.opaque
+{
+    opacity: 0;
+    user-select: none;
+    cursor: default;
+}
+
+@media (max-width: 750px)
+{
+    header#page_top
+    {
+        padding: 0px 0px;
+    }
+
+    main
+    {
+        margin: 8px 8px;
+    }
+    @media (max-width: 600px)
+    {
+        header#page_top
+        {
+            flex-direction: column;
+        }
+    }
+}
+
