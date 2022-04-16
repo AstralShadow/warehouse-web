@@ -11,6 +11,8 @@ use Core\RequestMethods\DELETE;
 use Core\RequestMethods\Fallback;
 use Core\RequestMethods\StartUp;
 
+use Models\User;
+
 
 class Home
 {
@@ -18,7 +20,19 @@ class Home
     #[GET]
     public static function index()
     {
-        return Page("index.html");
+        if(!DATABASE_ONLINE)
+            return Page("help/installation.html");
+
+        $user = User::fromSession();
+        if(isset($user))
+        {
+            if($user->name == "admin")
+                return Page("help/admin.html");
+            else
+                return Page("help/usage.html");
+        }
+        else
+            return Page("help/users.html");
     }
 
     #[Fallback]

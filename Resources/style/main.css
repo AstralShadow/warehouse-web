@@ -92,6 +92,11 @@ p, .paragraph
     text-indent: 2em;
 }
 
+fieldset > p:first-of-type
+{
+    margin-top: 0px;
+}
+
 input
 {
     border: 2px solid #999;
@@ -181,6 +186,14 @@ input[disabled]
     background-repeat: no-repeat;
 }
 
+.icon.demo
+{
+    display: inline-block;
+    border: 2px solid #999;
+    width: 24px;
+    height: 24px;
+    background-size: 16px 16px;
+}
 
 .edit
 {
