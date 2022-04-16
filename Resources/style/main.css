@@ -127,3 +127,16 @@ input
     font-weight: bold;
 }
 
+.price_input
+{
+    position: relative;
+    display: inline-block;
+}
+
+.currency
+{
+    position: absolute;
+    right: 40px;
+    top: 31px;
+    transform: translate(0%, -50%);
+}
