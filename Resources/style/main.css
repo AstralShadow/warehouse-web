@@ -170,6 +170,18 @@ input[disabled]
     min-width: 80px;
 }
 
+.icon, .row > .btn
+{
+    display: block;
+    width: 24px;
+    height: 24px;
+    border-radius: 40px;
+    background-size: 24px 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
 .edit
 {
     background-image: url("/Resources/img/draw.png");
@@ -186,15 +198,13 @@ input[disabled]
         url("/Resources/img/magnifier.png");
 }
 
-.icon, .row > .btn
+.shipped
 {
-    display: block;
-    width: 24px;
-    height: 24px;
-    border-radius: 40px;
-    background-size: 24px 24px;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image:
+        url("/Resources/img/shipped.png");
+    cursor: default;
+    border-radius: 8px;
+    background-size: 32px 32px;
 }
 
 .opaque
