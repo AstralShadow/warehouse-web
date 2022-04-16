@@ -16,10 +16,29 @@ use Core\RequestMethods\StartUp;
 class Show
 {
 
+    private static function generatePage()
+    {
+        $page = Page("data/list.html");
+
+        if(isset($_GET["missing_item"]))
+        {
+            $msg = "Доставката не е намерена.";
+            $page->setValue("error_msg", $msg);
+        }
+        
+        if(isset($_GET["deleted_item"]))
+        {
+            $msg = "Вие успешно изтрихте доставката.";
+            $page->setValue("success_msg", $msg);
+        }
+
+        return $page;
+    }
+
     #[GET]
     public static function list()
     {
-        return Page("data/list.html");
+        return generatePage();;
     }
 
 }

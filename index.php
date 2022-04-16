@@ -9,18 +9,18 @@ include "Extend/isValidString.php";
 include "Extend/CSRFTokenManager.php";
 include "Extend/generateToken.php";
 
-
 /* Позволява автоматично зареждане
  * на класове по тяхното име */
 include "Core/autoload.php";
 
-/* Използван при задаване на рутирането */
+/* Използван за дефиниция на достъпа при рутиране. */
 use Models\User;
 
 
 /* MySQL сървър */
 $mysql = [
-    "path" => "mysql:host=localhost;dbname=2022_04_c_sharp_competition",
+    "path" => "mysql:host=localhost;"
+               . "dbname=2022_04_c_sharp_competition",
     "name" => "c_sharp_competition",
     "pwd" => "94b53710-fc61-43d0-b43b-abc091b59b6c"
 ];
@@ -35,23 +35,19 @@ $app->usePDO($mysql["path"],
 
 
 /* Проверка за състоянието на MySQL сървъра*/
-try
-{
+try {
     $app->initPDO();
     define("DATABASE_ONLINE", true);
-} catch(PDOException $e)
-{
+} catch(PDOException $e) {
     define("DATABASE_ONLINE", false);
 }
 
 
+/* Създава администраторски профил
+ * Този потребител може да регистрира
+ * други потребители. */
 if(DATABASE_ONLINE)
 {
-
-    /* Създава администраторски профил
-     * Този потребител може да регистрира
-     * други потребители.
-     */
     $admin = User::findByName("admin");
     if(!isset($admin))
     {

@@ -18,20 +18,7 @@ class Delete
 
     const MARK_AS_DELETED = true;
 
-    #[GET]
-    public static function get()
-    {
-        $delivery = self::get_delivery();
-        if($delivery == null)
-        {
-            return redirect("/list?missing_item=1");
-        }
-        $response = self::generate_page($delivery);
-
-        return $response;
-    }
-
-    private static function get_delivery() : ?Delivery
+    private static function getDelivery() : ?Delivery
     {
         $id =& $_GET["id"];
         if(!isset($id))
@@ -47,7 +34,7 @@ class Delete
         return $item;
     }
 
-    private static function generate_page($delivery)
+    private static function generatePage($delivery)
     {
         $response = Page("data/delete.html");
 
@@ -68,15 +55,29 @@ class Delete
         return $response;
     }
 
-    #[POST]
-    public static function delete()
+
+    #[GET]
+    public static function get()
     {
-        $delivery = self::get_delivery();
+        $delivery = self::getDelivery();
         if($delivery == null)
         {
             return redirect("/list?missing_item=1");
         }
-        $response = self::generate_page($delivery);
+        $response = self::generatePage($delivery);
+
+        return $response;
+    }
+
+    #[POST]
+    public static function delete()
+    {
+        $delivery = self::getDelivery();
+        if($delivery == null)
+        {
+            return redirect("/list?missing_item=1");
+        }
+        $response = self::generatePage($delivery);
 
         $fine = true;
 

@@ -16,25 +16,7 @@ use \Models\Delivery;
 class Edit
 {
 
-    #[GET]
-    public static function get()
-    {
-        $delivery = self::get_delivery();
-        if($delivery == null)
-        {
-            return redirect("/list?missing_item=1");
-        }
-        $response = self::generate_page($delivery);
-
-        if(isset($_GET["success"]))
-        {
-            $msg = "Доставката беше редактирана успешно.";
-            $response->setValue("success_msg", $msg);
-        }
-        return $response;
-    }
-
-    private static function get_delivery() : ?Delivery
+    private static function getDelivery() : ?Delivery
     {
         $id =& $_GET["id"];
         if(!isset($id))
@@ -50,7 +32,7 @@ class Edit
         return $item;
     }
 
-    private static function generate_page($delivery)
+    private static function generatePage($delivery)
     {
         $response = Page("data/edit.html");
 
@@ -74,15 +56,35 @@ class Edit
         return $response;
     }
 
-    #[POST]
-    public static function edit()
+
+    #[GET]
+    public static function get()
     {
-        $delivery = self::get_delivery();
+        $delivery = self::getDelivery();
         if($delivery == null)
         {
             return redirect("/list?missing_item=1");
         }
-        $response = self::generate_page($delivery);
+        $response = self::generatePage($delivery);
+
+        if(isset($_GET["success"]))
+        {
+            $msg = "Доставката беше редактирана успешно.";
+            $response->setValue("success_msg", $msg);
+        }
+        return $response;
+    }
+
+
+    #[POST]
+    public static function edit()
+    {
+        $delivery = self::getDelivery();
+        if($delivery == null)
+        {
+            return redirect("/list?missing_item=1");
+        }
+        $response = self::generatePage($delivery);
 
 
         $criteria = [
