@@ -1,13 +1,13 @@
-CSRF protection
-Logout via post
+CSRF protection [security, optional]
+Logout via post [security, optional]
 
-list data
+[important] search data
+FullText search with mysql [optional, feature]
 
-Delete users
+Delete users [kinda important, optional]
 
-Responsive interface
+Responsive interface [optional]
 
-Tutorial
+Tutorial [kinda important, optional]
 
-FullText search with mysql
 

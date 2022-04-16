@@ -92,6 +92,7 @@ class Delete
             {
                 Delivery::delete($delivery);
             }
+
             return redirect("/list?deleted_item=1");
         }
 

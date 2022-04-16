@@ -168,9 +168,9 @@ class Edit
                 $delivery->$key = $val;
             $delivery->save();
 
+            # Redirecting, because I don't expect people
+            #  to edit something 2 times in row often.
             return redirect("/list?edit_success=1");
-            //return redirect("/edit?success=1&id="
-            //                 . $delivery->getId());
         }
 
         return $response;

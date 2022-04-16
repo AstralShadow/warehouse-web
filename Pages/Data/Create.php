@@ -113,6 +113,11 @@ class Create
         if($fine)
         {
             $delivery = new Delivery($output);
+
+            # Not redirectiong because warehouses usually
+            #  should get their deliveries at batches,
+            #  so it should be easier to insert
+            #  them at once (saves one click per item)
             return redirect("/new?success=1");
         }
 
