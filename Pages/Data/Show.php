@@ -38,7 +38,17 @@ class Show
     #[GET]
     public static function list()
     {
-        return generatePage();;
+        return self::generatePage();
+    }
+
+    #[GET("api/")]
+    public static function data($req)
+    {
+        $result = self::generatePage();
+        $page = intval($_GET["p"] ?? 1);
+        $search;
+
+        return $result;
     }
 
 }
