@@ -23,6 +23,7 @@ server {
     add_header X-XSS-Protection 0 always;
     # Stops inline scripts...
     add_header X-Content-Security-Policy "script-src 'self'" always;
+    add_header X-Content-Security-Policy "style-src 'self'" always;
     # X-Content-Security-Policy: script-src 'self' http://code.jquery.com; style-src 'self'
 
     location / {
