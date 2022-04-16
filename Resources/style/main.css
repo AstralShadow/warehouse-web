@@ -193,6 +193,20 @@ input[disabled]
     cursor: default;
 }
 
+.pair > .data
+{
+    display: none;
+    margin-left: 16px;
+    margin-right: 136px;
+    transform: translate(0px, -8px);
+}
+
+.pair.focus > .data
+{
+    display: block;
+}
+
+
 @media (max-width: 750px)
 {
     header#page_top

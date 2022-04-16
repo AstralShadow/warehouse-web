@@ -168,8 +168,9 @@ class Edit
                 $delivery->$key = $val;
             $delivery->save();
 
-            return redirect("/edit?success=1&id="
-                             . $delivery->getId());
+            return redirect("/list?edit_success=1");
+            //return redirect("/edit?success=1&id="
+            //                 . $delivery->getId());
         }
 
         return $response;

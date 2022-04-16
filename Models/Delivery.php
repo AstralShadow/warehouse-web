@@ -43,5 +43,19 @@ class Delivery extends Entity
         parent::__construct();
     }
 
+    public function apiData()
+    {
+        $data = [
+            "id" => $this->getId(),
+            "name" => $this->name,
+            "count" => $this->quantity . $this->unit_type,
+            "price" => $this->unit_price,
+            "deliver" => $this->deliver,
+            "date" => $this->date->format("d-m-Y")
+        ];
+
+        return $data;
+    }
+
 }
 

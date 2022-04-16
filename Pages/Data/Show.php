@@ -1,16 +1,14 @@
 <?php
 namespace Pages\Data;
 
-
 use Core\Request;
 use function Extend\layoutResponseFactory as Page;
 use function Extend\redirect;
+use Core\Responses\ApiResponse;
 use Core\RequestMethods\GET;
-use Core\RequestMethods\PUT;
 use Core\RequestMethods\POST;
-use Core\RequestMethods\DELETE;
-use Core\RequestMethods\Fallback;
-use Core\RequestMethods\StartUp;
+
+use Models\Delivery;
 
 
 class Show
@@ -32,6 +30,12 @@ class Show
             $page->setValue("success_msg", $msg);
         }
 
+        if(isset($_GET["edit_success"]))
+        {
+            $msg = "Вие успешно редактирахте доставката.";
+            $page->setValue("success_msg", $msg);
+        }
+
         return $page;
     }
 
@@ -41,14 +45,35 @@ class Show
         return self::generatePage();
     }
 
-    #[GET("api/")]
+    #[GET("/data")]
     public static function data($req)
     {
-        $result = self::generatePage();
-        $page = intval($_GET["p"] ?? 1);
         $search;
 
+        $query = [];
+
+        $collection = Delivery::find($query);
+        $result = [];
+        foreach($collection as $item)
+        {
+            if($item->deleted) continue;
+
+            $result[] = $item->apiData();
+        }
+
+        return self::json($result);
+    }
+
+    public static function json($data, $code = 200)
+    {
+        $result = new ApiResponse($code);
+        $result->echo($data);
         return $result;
+    }
+
+    public static function jsonError($error, $code = 400)
+    {
+        return self::json(["error" => $error], $code);
     }
 
 }
